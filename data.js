@@ -206,3 +206,20 @@ function createUtility3(cb) {
 }
 
 
+async.series([
+    createCategory,
+    createHero1,
+    createHero2,
+    createHero3,
+    createUtility1,
+    createUtility2,
+    createUtility3
+],
+function(err, results) {
+    if (err) {
+        console.log('Final error' + err);
+    } else {
+        console.log('Success!');
+    }
+    mongoose.connection.close();
+});
