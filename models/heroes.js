@@ -5,10 +5,10 @@ var Schema = mongoose.Schema;
 var HeroesSchema = new Schema(
     {
         title: { type: String, required: true },
-        image: { type: Schema.Types.ObjectId, ref: 'image' },
+        image: { type: String },
         rarity: { type: String, required: true, enum: ['Common', 'Uncommon', 'Rare', 'Mythical', 'Legendary', 'Immortal', 'Arcana'] },
         price: { type: Number, required: true },
-        stock: { type: Number}
+        stock: { type: Number }
     }
 );
 

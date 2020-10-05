@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var UtilitySchema = new Schema(
     {
         title: { type:String, required: true },
-        image: { type: Schema.Types.ObjectId, ref: 'image' },
+        image: { type: String },
         price: { type: Number, required: true }
     }
 );

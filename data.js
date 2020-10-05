@@ -6,9 +6,9 @@ if (!userArgs[0].startsWith('mongodb')) {
 }
 
 var async = require('async');
-var category = require('./models/category');
-var heroes = require('./models/heroes');
-var utility = require('./models/utility');
+var Category = require('./models/category');
+var Hero = require('./models/heroes');
+var Utility = require('./models/utility');
 
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb+srv://Cartoon:helloworld123@cluster0.zfch2.mongodb.net/inventory-app?retryWrites=true&w=majority';
@@ -47,7 +47,7 @@ function heroCreate(title, image, price, rarity, stock, cb) {
         stock: stock
     };
     if (image != false) herodetail.image = image;
-    var hero = new hero(herodetail);
+    var hero = new Hero(herodetail);
     hero.save(function(err) {
         if (err) {
             cb(err, null);
@@ -66,7 +66,7 @@ function utilityCreate(title, image, price, cb) {
         price: price
     };
     if (image != false) utilitydetail.image = image;
-    var utility = new utility(utilitydetail);
+    var utility = new Utility(utilitydetail);
     utility.save(function(err) {
         if (err) {
             cb(err, null);
@@ -82,28 +82,28 @@ function utilityCreate(title, image, price, cb) {
 function createCategory(cb) {
     async.series([
         function(callback) {
-            categoryCreate('Skins', '/public/images/skins_icon.jpg');
+            categoryCreate('Skins', '/public/images/skins_icon.jpg', callback);
         },
         function(callback) {
-            categoryCreate('Utility', '/public/images/utility_icon.jpg');
+            categoryCreate('Utility', '/public/images/utility_icon.jpg',callback);
         },
         function(callback) {
-            categoryCreate('Juggernaut', '/public/images/Juggernaut_icon.png');
+            categoryCreate('Juggernaut', '/public/images/Juggernaut_icon.png', callback);
         },
         function(callback) {
-            categoryCreate('Lina', '/public/images/Lina_icon.png');
+            categoryCreate('Lina', '/public/images/Lina_icon.png', callback);
         },
         function(callback) {
-            categoryCreate('Rubick', '/public/images/Rubick_icon.png');
+            categoryCreate('Rubick', '/public/images/Rubick_icon.png', callback);
         },
         function(callback) {
-            categoryCreate('Wards', '/public/images/wards_icon.jpg');
+            categoryCreate('Wards', '/public/images/wards_icon.jpg', callback);
         },
         function(callback) {
-            categoryCreate('Courier', '/public/images/courier_icon.png');
+            categoryCreate('Courier', '/public/images/courier_icon.png', callback);
         },
         function(callback) {
-            categoryCreate('Effigy', '/public/images/effigy_icon.jpg');
+            categoryCreate('Effigy', '/public/images/effigy_icon.jpg', callback);
         }
     ],
     cb);
@@ -113,13 +113,13 @@ function createCategory(cb) {
 function createHero1(cb) {
     async.parallel([
         function(callback) {
-            heroCreate('Bladeform Legacy', '/public/images/Bladeform_Legacy.png', '1,979.71', 'Arcana', '5');
+            heroCreate('Bladeform Legacy', '/public/images/Bladeform_Legacy.png', '1979.71', 'Arcana', '5', callback);
         },
         function(callback) {
-            heroCreate('Lineage of the Stormlords', '/public/images/Lineage_of_the_Stormlords.png', 'Not Tradeable', 'Mythical', '0');
+            heroCreate('Lineage of the Stormlords', '/public/images/Lineage_of_the_Stormlords.png', '673.90', 'Mythical', '0', callback);
         },
         function(callback) {
-            heroCreate('Gifts of the Vanished Isle Set', '/public/images/Cosmetic_icon_Gifts_of_the_Vanished_Isle_Set.png', '59.39', 'Rare', '1');
+            heroCreate('Gifts of the Vanished Isle Set', '/public/images/Cosmetic_icon_Gifts_of_the_Vanished_Isle_Set.png', '59.39', 'Rare', '1', callback);
         }
     ],
     cb);
@@ -129,13 +129,13 @@ function createHero1(cb) {
 function createHero2(cb) {
     async.parallel([
         function(callback) {
-            heroCreate('Fiery Soul of the Slayer', '/public/images/Fiery_Soul_of_the_Slayer.png', '1,539.77', 'Arcana', '1');
+            heroCreate('Fiery Soul of the Slayer', '/public/images/Fiery_Soul_of_the_Slayer.png', '1539.77', 'Arcana', '1', callback);
         },
         function(callback) {
-            heroCreate('Light of the Solar Divine', '/public/images/Light_of_the_Solar_Divine.png', '2.20', 'Rare', '6');
+            heroCreate('Light of the Solar Divine', '/public/images/Light_of_the_Solar_Divine.png', '2.20', 'Rare', '6', callback);
         },
         function(callback) {
-            heroCreate('Ember Crane Set', '/public/images/Ember_Crane_Set.png', '851.28', 'Mythical', '2');
+            heroCreate('Ember Crane Set', '/public/images/Ember_Crane_Set.png', '851.28', 'Mythical', '2', callback);
         }
     ],
     cb);
@@ -145,13 +145,13 @@ function createHero2(cb) {
 function createHero3(cb) {
     async.parallel([
         function(callback) {
-            heroCreate('The Magus Cypher', '/public/images/The_Magus_Cypher.png', '2,196.13', 'Arcana', '5');
+            heroCreate('The Magus Cypher', '/public/images/The_Magus_Cypher.png', '2196.13', 'Arcana', '5', callback);
         },
         function(callback) {
-            heroCreate('Garb of the Cunning Augur', '/public/images/Garb_of_the_Cunning_Augur.png', 'Not Tradeable', 'Mythical', '0');
+            heroCreate('Garb of the Cunning Augur', '/public/images/Garb_of_the_Cunning_Augur.png', '543.87', 'Mythical', '0', callback);
         },
         function(callback) {
-            heroCreate('Avatar of the Impossible Realm', '/public/images/Avatar_of_the_Impossible_Realm.png', '1,654.46', 'Mythical', '1');
+            heroCreate('Avatar of the Impossible Realm', '/public/images/Avatar_of_the_Impossible_Realm.png', '1654.46', 'Mythical', '1', callback);
         }
     ],
     cb);
@@ -161,13 +161,13 @@ function createHero3(cb) {
 function createUtility1(cb) {
     async.parallel([
         function(callback) {
-            utilityCreate('Curious Snaptrap', '92.90', '/public/images/Ward_Curious_Snaptrap.png');
+            utilityCreate('Curious Snaptrap', '/public/images/Ward_Curious_Snaptrap.png', '92.90', callback);
         },
         function(callback) {
-            utilityCreate('The Watcher Below', '6.58', '/public/images/Ward_The_Watcher_Below.png');
+            utilityCreate('The Watcher Below', '/public/images/Ward_The_Watcher_Below.png', '6.58', callback);
         },
         function(callback) {
-            utilityCreate('Schnapp & Spyfly', '375.90', '/public/images/Ward_Schnapp_%26_Spyfly.png');
+            utilityCreate('Schnapp & Spyfly', '/public/images/Ward_Schnapp_%26_Spyfly.png', '375.90', callback);
         }
     ],
     cb);
@@ -177,13 +177,13 @@ function createUtility1(cb) {
 function createUtility2(cb) {
     async.parallel([
         function(callback) {
-            utilityCreate('The Defense Season 2 War Dog', '20,729.64', '/public/images/Courier_The_Defense_Season_2_War_Dog.png');
+            utilityCreate('The Defense Season 2 War Dog', '/public/images/Courier_The_Defense_Season_2_War_Dog.png', '20729.64', callback);
         },
         function(callback) {
-            utilityCreate('Hakobi and Tenneko', '3,301.60', '/public/images/CourierHakobi_and_Tenneko.png');
+            utilityCreate('Hakobi and Tenneko', '/public/images/CourierHakobi_and_Tenneko.png', '3301.60', callback);
         },
         function(callback) {
-            utilityCreate('Honey Heist Baby Roshan', '36,940.93', '/public/images/Courier_Honey_Heist_Baby_Roshan.png');
+            utilityCreate('Honey Heist Baby Roshan', '/public/images/Courier_Honey_Heist_Baby_Roshan.png', '36940.93', callback);
         }
     ],
     cb);
@@ -193,13 +193,13 @@ function createUtility2(cb) {
 function createUtility3(cb) {
     async.parallel([
         function(callback) {
-            utilityCreate('Heroic Effigy of Winter 2016 Level III', '327.66', '/public/images/Effigy_Heroic_Effigy_of_Winter_2016_Level_III.png');
+            utilityCreate('Heroic Effigy of Winter 2016 Level III', '/public/images/Effigy_Heroic_Effigy_of_Winter_2016_Level_III.png', '327.66', callback);
         },
         function(callback) {
-            utilityCreate('Heroic Effigy of The International 2016 III', '117.89', '/public/images/Effigy_Heroic_Effigy_of_The_International_2016_III.png');
+            utilityCreate('Heroic Effigy of The International 2016 III', '/public/images/Effigy_Heroic_Effigy_of_The_International_2016_III.png', '117.89', callback);
         },
         function(callback) {
-            utilityCreate('Heroic Effigy of The Fall 2016 Battle Pass Level III', '51.26', '/public/images/Effigy_Heroic_Effigy_of_The_Fall_2016_Battle_Pass_Level_III.png');
+            utilityCreate('Heroic Effigy of The Fall 2016 Battle Pass Level III', '/public/images/Effigy_Heroic_Effigy_of_The_Fall_2016_Battle_Pass_Level_III.png', '51.26', callback);
         }
     ],
     cb);

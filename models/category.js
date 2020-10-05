@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 
 var CategorySchema = new Schema(
     {
-        title: { type: String, required: true }
+        title: { type: String, required: true },
+        image: { type: String }
     }
 );
 
