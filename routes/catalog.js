@@ -50,3 +50,6 @@ router.post('/utility/:id/delete', utility_controller.utility_delete_post);
 router.get('/utility/:id/update', utility_controller.utility_update_get);
 
 router.post('/utility/:id/update', utility_controller.utility_update_post);
+
+
+module.exports = router;
