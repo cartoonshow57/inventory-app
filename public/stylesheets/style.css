@@ -1,4 +1,15 @@
 
+@font-face {
+  font-family: Poppins;
+  src: url("C:\Windows\Fonts\Poppins");
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px solid white;
+}
+
 hr {
   border: none;
   border-top: 3px solid #333333;
@@ -6,6 +17,13 @@ hr {
   overflow: visible;
   text-align: center;
   height: 5px;
+}
+
+h1 {
+  text-align: center;
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+
 }
 
 .home {
