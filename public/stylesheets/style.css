@@ -1,44 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 
 @font-face {
   font-family: Poppins;
-  src: url("C:\Windows\Fonts\Poppins");
+  src: url('../fonts/Poppins-Medium.ttf')
 }
 
-a {
-  color: black;
-  text-decoration: none;
-  border-bottom: 1px solid white;
+@font-face {
+  font-family: Chilanka;
+  src: url('../fonts/Chilanka-Regular.ttf')
 }
 
-hr {
-  border: none;
-  border-top: 3px solid #333333;
-  color: #333333;
-  overflow: visible;
-  text-align: center;
-  height: 5px;
+body {
+  background-image: url('../images/background_final.jpg');
+}
+
+.header {
+  background-color: rgb(76, 235, 168);
+  border-bottom: 3px solid black;
 }
 
 h1 {
+  color: rgb(106, 235, 181);
   text-align: center;
-  font-family: Poppins, sans-serif;
+  font-family: Poppins;
   font-weight: 500;
-
 }
 
 .home {
   display: inline-block;
-  color: rgb(0, 0, 0);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 700;
   font-size: 35px;
-  margin: 10px 5px 5px 10px;
+  margin: 10px 5px 5px 20px;
   padding: 5px;
+}
+
+.home > a {
+  color: black;
+  text-decoration: none;
 }
 
 .hero, .utility {
   display: inline-block;
-  color: rgb(0, 0, 0);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 500;
   font-size: 25px;
@@ -46,10 +52,57 @@ h1 {
   padding: 5px;
 }
 
-footer {
+.hero > a, .utility > a {
+  color: grey;
+  text-decoration: none;
+}
+
+.index {
+  opacity: 1;
+  display: grid;
+  height: 300px;
+  width: 500px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
   position: absolute;
-  bottom: 20px;
+  top: 70%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: rgb(14, 240, 172);
+  font-size: 70px;
+  font-family: Chilanka;
+  justify-items: center;
+  justify-content: center;
+}
+
+.index > div > a {
+  color: rgb(0, 228, 133);
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 140px 100px;
+  background-color: rgba(255, 255, 255, 0.233);
+  border: 4px double rgb(0, 0, 0);
+  border-radius: 25px;
+  border-color: rgb(106, 235, 181);
+}
+
+.index > div > a:hover {
+  background-color: rgba(87, 102, 96, 0.63);
+}
+
+footer {
+  height: 45px;
+  background-color: rgb(106, 235, 181);
+  position: absolute;
   text-align: center;
-  left: 0px;
-  right: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 3px solid black;
+}
+
+img {
+  text-indent: 2.5em;
+  margin-left: 10px;
 }

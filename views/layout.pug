@@ -4,20 +4,20 @@ html(lang='en')
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    nav
-      div(class='home')
+    nav.header
+      div.home
         a(href='/catalog/') Home
         
-      div(class='hero')
+      div.hero
         a(href='/catalog/hero/create') New Hero
         
-      div(class='utility')
+      div.utility
         a(href='/catalog/utility/create') New Utility
-      
-    hr
 
     block content
 
     footer
-      hr
-      | © Cartoonshow 2020
+      p
+        | Made by Lakshya
+        a(href='https://github.com/cartoonshow57')
+          img(src='/images/GitHub-Mark-Light-32px.png', alt='Github Logo')
