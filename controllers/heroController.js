@@ -1,8 +1,14 @@
+const { nextTick } = require('async');
+const category = require('../models/category');
 var Hero = require('../models/heroes');
 
 
 exports.hero_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: hero list');
+    category.find({}, 'title image')
+        .exec(function(err, list_hero) {
+            if (err) { return next(err); }
+            res.render('hero_list', { title: 'Hero List', hero_list: list_hero.slice(2, 5) });
+        });
 };
 
 exports.hero_detail = function(req, res) {

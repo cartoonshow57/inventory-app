@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1= title
+
+    section
+        each hero in hero_list
+            a(href=hero.url)
+                div.item
+                    img(src=hero.image, title=hero.title + ' Image')
+                    br
+                    |#{hero.title}
+                    
+
+        else
+            | There are no items.
