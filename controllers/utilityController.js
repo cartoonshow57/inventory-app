@@ -1,8 +1,14 @@
 var Utility = require('../models/utility');
+var Category = require('../models/category');
+const { nextTick } = require('async');
 
 
 exports.utility_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: utility list');
+    Category.find({}, 'title image')
+        .exec(function(err, utility_list) {
+            if (err) { return next(err); }
+            res.render('utility_list', { title: 'Utility List', list_utility: utility_list.slice(5, 8) });
+        });
 };
 
 exports.utility_detail = function(req, res) {

@@ -111,6 +111,11 @@ section > a:hover {
   text-decoration: underline;
 }
 
+section > a > .item > img {
+  background-color: rgb(255, 255, 255);
+}
+
+
 .item {
   font-size: 35px;
   font-family: Chilanka;

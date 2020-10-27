@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+    h1= title
+
+    section
+        each utility in list_utility
+            a(href=utility.url)
+                div.item
+                    img(src=utility.image, title=utility.title + ' Image')
+                    br
+                    |#{utility.title}
+
+        else
+            |There are no items.
