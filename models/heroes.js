@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var HeroesSchema = new Schema(
     {
         title: { type: String, required: true },
+        skin_name: { type: String },
         image: { type: String },
         rarity: { type: String, required: true, enum: ['Common', 'Uncommon', 'Rare', 'Mythical', 'Legendary', 'Immortal', 'Arcana'] },
         price: { type: Number, required: true },
