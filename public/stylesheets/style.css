@@ -127,10 +127,30 @@ section > a > .item > img {
   background-color: rgba(87, 102, 96, 0.63);
 }
 
+section > .item > p > strong {
+  text-decoration: none;
+  font-family: Roboto;
+  color: rgb(0, 228, 133);
+}
+
+section > .item > p {
+  font-size: 25px;
+  font-weight: 600;
+  color:rgb(255, 255, 255);
+}
+
+section > .item > p> span:hover {
+  text-decoration: underline;
+}
+
+section > div > p > .stock {
+  display: inline;
+}
+
 footer {
   height: 45px;
   background-color: rgb(106, 235, 181);
-  position: absolute;
+  position: fixed;
   text-align: center;
   left: 0;
   right: 0;

@@ -1,4 +1,4 @@
-const { nextTick } = require('async');
+const async = require('async');
 const category = require('../models/category');
 var Hero = require('../models/heroes');
 
@@ -12,7 +12,15 @@ exports.hero_list = function(req, res) {
 };
 
 exports.hero_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: hero list');
+    category.findById({ _id: req.params.id }).
+        exec(function(err, results) {
+            Hero.find({ 'title': results.title }).
+                populate('skins').
+                exec(function(err, results) {
+                    if (err) { return next(err); }
+                    res.render('hero_detail', { title: results[0].title + ' Skins', skins_list: results });
+                });
+        });
 };
 
 exports.hero_create_get = function(req, res) {
