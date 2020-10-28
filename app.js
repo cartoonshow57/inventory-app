@@ -12,7 +12,7 @@ var catalogRouter = require('./routes/catalog');
 var app = express();
 
 var mongoDB = 'mongodb+srv://Cartoon:helloworld123@cluster0.zfch2.mongodb.net/inventory-app?retryWrites=true&w=majority';
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true  });
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error'));
 
