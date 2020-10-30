@@ -169,7 +169,7 @@ function createUtility1(cb) {
             utilityCreate('Wards', 'The Watcher Below', '/images/Ward_The_Watcher_Below.png', '6.58', callback);
         },
         function(callback) {
-            utilityCreate('Wards', 'Schnapp & Spyfly', '/images/Ward_Schnapp_%26_Spyfly.png', '375.90', callback);
+            utilityCreate('Wards', 'Schnapp & Spyfly', '/images/Ward_Schnapp_and_Spyfly.png', '375.90', callback);
         }
     ],
     cb);

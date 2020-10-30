@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+    h1= title
+
+    section
+        each skin in skins_list
+            div.item
+                img(src=skin.image, title=skin.utility_name + ' Image')
+                p #[strong Name:&nbsp;]
+                    span #{skin.utility_name}
+                p #[strong Price:&nbsp;]
+                    span #{skin.price}
