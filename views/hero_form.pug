@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+    h1= title
+
+    form(method='POST' action='')
+        ul
+            li.image
+                label(for='image') Image:
+                input(type='file' id='image' name='image')
+            li
+                label(for='name') Name:
+                input(type='text' id='name' name='name')
+            li.button
+                button(type='submit') Create
+
+    if errors
+        ul
+            for error in errors
+                li.error!= error.msg
