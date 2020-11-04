@@ -21,8 +21,9 @@ var heroes = [];
 var utilities = [];
 
 
-function categoryCreate(title, image, cb) {
+function categoryCreate(type, title, image, cb) {
     name = {
+        type: type,
         title: title,
     };
     if (image != false) name.image = image;
@@ -84,28 +85,28 @@ function utilityCreate(title, utility_name, image, price, cb) {
 function createCategory(cb) {
     async.series([
         function(callback) {
-            categoryCreate('Skins', '/images/skins_icon.jpg', callback);
+            categoryCreate('Category', 'Skins', '/images/skins_icon.jpg', callback);
         },
         function(callback) {
-            categoryCreate('Utility', '/images/utility_icon.jpg',callback);
+            categoryCreate('Category', 'Utility', '/images/utility_icon.jpg',callback);
         },
         function(callback) {
-            categoryCreate('Juggernaut', '/images/Juggernaut_icon.png', callback);
+            categoryCreate('Hero', 'Juggernaut', '/images/Juggernaut_icon.png', callback);
         },
         function(callback) {
-            categoryCreate('Lina', '/images/Lina_icon.png', callback);
+            categoryCreate('Hero', 'Lina', '/images/Lina_icon.png', callback);
         },
         function(callback) {
-            categoryCreate('Rubick', '/images/Rubick_icon.png', callback);
+            categoryCreate('Hero', 'Rubick', '/images/Rubick_icon.png', callback);
         },
         function(callback) {
-            categoryCreate('Wards', '/images/wards_icon.jpg', callback);
+            categoryCreate('Utility', 'Wards', '/images/wards_icon.jpg', callback);
         },
         function(callback) {
-            categoryCreate('Courier', '/images/courier_icon.png', callback);
+            categoryCreate('Utility', 'Courier', '/images/courier_icon.png', callback);
         },
         function(callback) {
-            categoryCreate('Effigy', '/images/effigy_icon.jpg', callback);
+            categoryCreate('Utility', 'Effigy', '/images/effigy_icon.jpg', callback);
         }
     ],
     cb);
