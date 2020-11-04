@@ -102,6 +102,7 @@ section {
   justify-content: space-evenly;
   overflow: hidden;
   text-align: center;
+  margin-bottom: 50px;
 }
 
 section > a {
