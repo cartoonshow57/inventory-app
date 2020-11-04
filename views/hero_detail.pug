@@ -5,14 +5,18 @@ block content
     h1= title
 
     section
-        each skin in skins_list
-            div.item
-                img(src=skin.image, title=skin.image + ' Image')
-                p #[strong Name: &nbsp;] 
-                    span #{skin.skin_name}
-                p #[strong Rarity: &nbsp;]
-                    span #{skin.rarity}
-                p #[strong Price: &nbsp;] 
-                    span #{skin.price}
-                p #[strong Stock: &nbsp;] 
-                    span #{skin.stock}
+        if skins_list
+            each skin in skins_list
+                div.item
+                    img(src=skin.image, title=skin.image + ' Image')
+                    p #[strong Name: &nbsp;] 
+                        span #{skin.skin_name}
+                    p #[strong Rarity: &nbsp;]
+                        span #{skin.rarity}
+                    p #[strong Price: &nbsp;] 
+                        span #{skin.price}
+                    p #[strong Stock: &nbsp;] 
+                        span #{skin.stock}
+
+        else
+            p.else There are no skins available.
