@@ -7,7 +7,6 @@ const { body, validationResult } = require('express-validator');
 exports.hero_list = function(req, res) {
     category.find({ type: 'Hero'})
         .exec(function(err, list_hero) {
-            console.log(list_hero);
             if (err) { return next(err); }
             console.log(list_hero);
             res.render('hero_list', { title: 'Hero List', hero_list: list_hero });
@@ -54,13 +53,11 @@ exports.hero_create_post = [
                 exec(function(err, found_hero) {
                     if (err) { return next(err); }
                     if (found_hero) {
-                        console.log('Redirected');
                         res.redirect(found_hero.hero_url);
                     }
                     else {
                         hero.save(function(err) {
                             if (err) { return next(err); }
-                            console.log('Hero created successfully');
                             res.redirect(hero.hero_url);
                         });
                     }
