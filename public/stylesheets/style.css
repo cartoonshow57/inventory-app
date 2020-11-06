@@ -97,7 +97,7 @@ section {
   position: relative;
   top: 50px;
   display: grid;
-  grid-template-columns: repeat(3, 250px);
+  grid-template-columns: repeat(3, 265px);
   grid-gap: 100px;
   justify-content: space-evenly;
   overflow: hidden;
@@ -242,6 +242,31 @@ button:hover {
   font-size: 25px;
   text-align: center;
   color: rgb(0, 228, 133);
+  background-color: rgba(87, 102, 96, 0.63);
+}
+
+.delete > a{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 30px;
+  color: rgb(0, 228, 133);
+  text-decoration: none;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.delete > a:hover {
+  text-decoration: underline;
+}
+
+div > .delete {
+  font-size: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: rgb(0, 228, 133);
+  text-align: center;
+  margin-top: 50px;
   background-color: rgba(87, 102, 96, 0.63);
 }
 

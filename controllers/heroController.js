@@ -8,7 +8,6 @@ exports.hero_list = function(req, res) {
     category.find({ type: 'Hero'})
         .exec(function(err, list_hero) {
             if (err) { return next(err); }
-            console.log(list_hero);
             res.render('hero_list', { title: 'Hero List', hero_list: list_hero });
         });
 };
@@ -22,10 +21,10 @@ exports.hero_detail = function(req, res) {
                 exec(function(err, skins) {
                     if (err) { return next(err); }
                     if (typeof skins !== 'undefined' && skins.length > 0) {
-                        res.render('hero_detail', { title: skins[0].title + ' Skins', skins_list: skins });
+                        res.render('hero_detail', { title: skins[0].title + ' Skins', skins_list: skins, hero: results });
                     }
                     else {
-                        res.render('hero_detail', { title: results.title + ' Skins' });
+                        res.render('hero_detail', { title: results.title + ' Skins', hero: results });
                     }
                 });
         });
@@ -66,12 +65,25 @@ exports.hero_create_post = [
     }
 ];
 
-exports.hero_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: hero delete GET');
+exports.hero_delete_get = function(req, res, next) {
+    category.findById({ _id: req.params.id }).
+        exec(function(err, result) {
+            if (err) { return next(err); }
+            if (result == null) {
+                res.redirect('/catalog/hero/');
+            }
+            else {
+                res.render('hero_delete', { title: 'Delete Hero: ' + result.title });
+            }
+        });
 };
 
 exports.hero_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: hero delete POST');
+    category.findByIdAndDelete({ _id: req.params.id }).
+        exec(function(err, results) {
+            if ( err) { return next(err); }
+            res.redirect('/catalog/skins');
+        });
 };
 
 exports.hero_update_get = function(req, res) {
