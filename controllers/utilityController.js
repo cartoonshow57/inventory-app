@@ -21,10 +21,10 @@ exports.utility_detail = function(req, res) {
                 exec(function(err, utility_list) {
                     if (err) { return next(err); }
                     if (typeof utility_list !== 'undefined' && utility_list.length > 0) {
-                        res.render('utility_detail', { title: results.title + ' Skins', skins_list: utility_list });
+                        res.render('utility_detail', { title: results.title + ' Skins', skins_list: utility_list, utility: results });
                     }
                     else {
-                        res.render('utility_detail', { title: results.title + ' Skins'});
+                        res.render('utility_detail', { title: results.title + ' Skins', utility: results });
                     }
                 });
         });
@@ -66,11 +66,24 @@ exports.utility_create_post = [
 ];
 
 exports.utility_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: utility delete GET');
+    category.findById({ _id: req.params.id }).
+        exec(function(err, results) {
+            if (err) { return next(err); }
+            if (results == null ) {
+                res.redirect('/catalog/utility');
+            }
+            else {
+                res.render('utility_delete', { title: 'Delete Utility: ' + results.title });
+            }
+        });
 };
 
 exports.utility_delete_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: utility delete POST');
+    category.findByIdAndRemove({ _id: req.params.id }).
+        exec(function(err, results) {
+            if (err) { return next(err); }
+            res.redirect('/catalog/utility');
+        });
 };
 
 exports.utility_update_get = function(req, res) {
